@@ -1,12 +1,17 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node app"
-  },
+  "name": "passport-google-oauth-examples-oauth2",
+  "version": "0.0.0-101",
   "dependencies": {
-    "express": "3.1.0",
-    "ejs": "*"
+    "express": ">= 0.0.0",
+    "ejs": ">= 0.0.0",
+    "passport": ">= 0.0.0",
+    "passport-google-oauth": ">= 0.0.0"
+  },
+  "subdomain": "jfloff.oauth2",
+  "scripts": {
+    "start": "app.js"
+  },
+  "engines": {
+    "node": "0.8.x"
   }
 }

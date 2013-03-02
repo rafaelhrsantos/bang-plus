@@ -14,9 +14,9 @@
   <link href="stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
   <link href="stylesheets/mycss.css" rel="stylesheet">
   <style>
-  #gallery { padding: 2em; float: center; min-height: 12em; }
+  #gallery { padding: 0.5em; float: center; min-height: 12em; }
   .gallery.custom-state-active { background: #eee; }
-  .gallery li { float: left; width: 150px; height:200; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
+  .gallery li { float: left; width: 160px; height:220; padding: 0.4em; margin: 1em 1.5em 1em 1.5em; text-align: center; }
   .gallery li h5 { margin: 0 0 0.4em; cursor: pointer; }
   .gallery li a { float: center }
   .gallery li a.ui-icon-zoomin { float: left; }
@@ -36,12 +36,13 @@
  
       if ( $modal.length ) {
         $modal.dialog( "open" );
-      } else {
-        var img = $( "<img alt='" + title + "' width='384' height='288' style='display: none; padding: 8px;'/>" )
+      } else {;
+        var img = $( "<img alt='" + title + "'; width='284'; height='288'; float='center'; style='display: none; padding: 8px;'/>" )
           .attr( "src", $link.attr("src")).appendTo( "body" );
 
         setTimeout(function() {
           img.dialog({
+						dialogClass: "ui-dialog-no-titlebar",
             resizable: false,
             title: title,
             width: img.width,
@@ -50,7 +51,7 @@
               "TAG ME": function() { //<--------------------definier
                 $( this ).dialog();
               },
-              Cancel: function() {
+              "Cancel": function() {
                 $( this ).dialog( "close" );
               }
             }
@@ -71,14 +72,15 @@
   });
   </script>
 </head>
-<body  ng-controller="Bangers">
+<body style="background-color:#CCCCCC" ng-controller="Bangers">
+
   <center>
     <div class="btn-group">
       <h2>Scroll and Tag it:</h2>
-      <button class="btn">Female</button>
-      <button class="btn">Male</button>
-      <button class="btn">All</button>
-      <button class="btn">Give Up</button>
+      <button class="btn" ng-click="female()">Female</button>
+      <button class="btn" ng-click="male()">Male</button>
+      <button class="btn" ng-click="all()">All</button>
+      <button class="btn" ng-click="none()">Give Up</button>
     </div>
   </center>
 
@@ -87,43 +89,9 @@
 <ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix" ng-repeat="bangs in bangers">
   <li class="ui-widget-content ui-corner-tr" ng-repeat="bang in bangs">
     <h5>{{bang.name}}</h5>
-    <img src={{bang.img}} alt={{bang.name}} width="150" height="200" />
+    <img src={{bang.img}} alt={{bang.name}} width="200" height="250" />
   </li>
 </ul>
-
- 
-<ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
-  
-  <li class="ui-widget-content ui-corner-tr">
-    <h5>High Tatras</h5>
-    <img src="images/high_tatras_min.jpg" alt="The peaks of High Tatras" width="150" height="200" />
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5>High Tatras 2</h5>
-    <img src="images/high_tatras2_min.jpg" alt="The chalet at the Green mountain lake" width="150" height="200" />
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5>High Tatras 3</h5>
-    <img src="images/high_tatras3_min.jpg" alt="Planning the ascent" width="150" height="200" />
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5>High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="150" height="200" />
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5>High Tatras 5</h5>
-    <img src="images/high_tatras_min.jpg" alt="The peaks of High Tatras" width="150" height="200" />
-  </li>
-  <li>
-    <button type="button">Click Me!</button>
-  </li>
-</ul>
-
-
- 
-<!-- <div id="trash" class="ui-widget-content ui-state-default">
-  <h4 class="ui-widget-header"><span class="ui-icon ui-icon-trash">Trash</span> Trash</h4>
-</div> -->
  
 </div>
 </body>
