@@ -9,10 +9,10 @@ function Bangers($scope) {
     {"name": "lady 3",
      "img": "images/bang.jpg",
      "sex": "female"},
-     {"name": "lady 4",
+     {"name": "male 4",
      "img": "-",
      "sex": "male"},
-     {"name": "lady 5",
+     {"name": "male 5",
      "img": "-",
      "sex": "male"}],
      [{"name": "lady 6",
@@ -41,7 +41,7 @@ function Bangers($scope) {
 				if($scope.allbangers[i][j].sex == "female") {
 					$scope.bangers[array][count] = clone($scope.allbangers[i][j]);
 					count += 1;
-					if((count % 5) == 0) { array += 1; }
+					if((count % 5) == 0) { array += 1; count = 0;}
 				}
 		}}};
 	
@@ -54,12 +54,26 @@ function Bangers($scope) {
 				if($scope.allbangers[i][j].sex == "male") {
 					$scope.bangers[array][count] = clone($scope.allbangers[i][j]);
 					count += 1;
-					if((count % 5) == 0) { array += 1; }
+					if((count % 5) == 0) { array += 1; count = 0;}
 				}
 		}}};
 	
 	$scope.all = function() { $scope.bangers = $scope.allbangers; };
 	
 	$scope.none = function() { $scope.bangers = new Array(new Array) };
-
+	
+	$scope.receive = function(friends_name) {
+		$scope.bangers = new Array(new Array(5));
+		var count = 0;
+		var array = 0;
+		for (var i = 0; i < friends_name.length; i++) {
+			console.log(friends_name[i]);
+			console.log(i);
+			$scope.bangers[array][count] = clone($scope.allbangers[0][4]);
+			$scope.bangers[array][count].name = friends_name[i];
+			if((count % 5) == 0) { array += 1;  count = 0;}
+		}
+	}; 
+	
+	//$scope.receive(["ui", "rt", "pme", "jm", "fg", "tm", "vb"]);
 };
